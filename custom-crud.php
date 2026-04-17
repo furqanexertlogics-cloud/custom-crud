@@ -298,3 +298,21 @@ function crud_delete()
 </div></div></div>
 
 <?php }
+
+
+
+if (file_exists(plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php')) {
+
+    require_once plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
+
+    if (class_exists('YahnisElsts\PluginUpdateChecker\v5\PucFactory')) {
+
+        $updateChecker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+            'https://github.com/furqanexertlogics-cloud/custom-crud',
+            __FILE__,
+            'custom-crud'
+        );
+
+        $updateChecker->setBranch('main');
+    }
+}
